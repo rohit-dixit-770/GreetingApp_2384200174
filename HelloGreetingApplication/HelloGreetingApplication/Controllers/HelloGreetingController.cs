@@ -11,10 +11,12 @@ namespace HelloGreetingApplication.Controllers
     [Route("[controller]")]
     public class HelloGreetingController : ControllerBase
     {
-        private readonly ILogger<HelloGreetingController> _logger;     
-        public HelloGreetingController(ILogger<HelloGreetingController> logger)
+        private readonly ILogger<HelloGreetingController> _logger;
+        private readonly IGreetingBL _greetingBL;
+        public HelloGreetingController(IGreetingBL greetingBL, ILogger<HelloGreetingController> logger)
         {
             _logger = logger;
+            _greetingBL = greetingBL;
         }
 
         /// <summary>
@@ -25,12 +27,13 @@ namespace HelloGreetingApplication.Controllers
         public IActionResult Get() 
         {
             _logger.LogInformation("GET request received");
+            var greetingMessage = _greetingBL.GreetingMessage();
 
             ResponseModel<string> responseModel = new()
             {
                 Success = true,
                 Message = "Hello to Greeting App API Endpoint",
-                Data = "Hello, World!"
+                Data = greetingMessage
             };
 
             return Ok(responseModel);
