@@ -1,5 +1,6 @@
 using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.OpenApi.Models;
 using NLog;
 using NLog.Web;
 using RepositoryLayer.Interface;
@@ -25,27 +26,40 @@ try
     // Register Swagger
 
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
-
-    var app = builder.Build();
-
-    if (app.Environment.IsDevelopment())
+    builder.Services.AddSwaggerGen(options =>
     {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
+        options.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Title = "Greeting Application",
+            Version = "v1",
+            Description = "API for greeting users",
+            Contact = new OpenApiContact
+            {
+                Name = "Rohit Dixit",
+                Email = "rohitdixit570@gmail.com",
+            }
+        });
+    });
 
-    // Configure the HTTP request pipeline.
+        var app = builder.Build();
 
-    app.UseHttpsRedirection();
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
 
-    app.UseAuthorization();
+        // Configure the HTTP request pipeline.
 
-    app.MapControllers();
+        app.UseHttpsRedirection();
 
-    app.Run();
+        app.UseAuthorization();
+
+        app.MapControllers();
+
+        app.Run();
 }
-catch(Exception ex)
+catch (Exception ex)
 {
     logger.Error(ex);
     throw;
