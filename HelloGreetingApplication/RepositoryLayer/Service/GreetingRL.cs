@@ -10,9 +10,10 @@ namespace RepositoryLayer.Service
     public class GreetingRL : IGreetingRL
     {
 
-        public string GreetingMessage()
+        public string GreetingMessage(string FirstName, string LastName)
         {
-            return "Hello, World!";
+            var name = $"{FirstName} {LastName}".Trim();
+            return string.IsNullOrEmpty(name) ? "Hello, World!" : $"Hello, {name}!";
         }
     }
 }

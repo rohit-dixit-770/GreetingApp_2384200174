@@ -17,9 +17,9 @@ namespace BusinessLayer.Service
             _greetingRL = greetingRL;
         }
 
-        public string GreetingMessage()
+        public string GreetingMessage(string FirstName, string LastName)
         {
-            var result = _greetingRL.GreetingMessage();
+            var result = _greetingRL.GreetingMessage(FirstName , LastName);
             return result;
         }
     }

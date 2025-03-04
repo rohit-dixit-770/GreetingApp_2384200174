@@ -22,12 +22,14 @@ namespace HelloGreetingApplication.Controllers
         /// <summary>
         /// Get method to get the greeting message
         /// </summary>
-        /// <returns>"Hello, World!"</returns>
+        /// <param name="FirstName"></param>
+        /// <param name="LastName"></param>
+        /// <returns>Personalized message according to input</returns>
         [HttpGet]
-        public IActionResult Get() 
+        public IActionResult Get(string? FirstName, string? LastName) 
         {
             _logger.LogInformation("GET request received");
-            var greetingMessage = _greetingBL.GreetingMessage();
+            var greetingMessage = _greetingBL.GreetingMessage(FirstName, LastName);
 
             ResponseModel<string> responseModel = new()
             {
