@@ -10,3 +10,7 @@ C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Repository
 C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\refint\RepositoryLayer.dll
 C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.pdb
 C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\ref\RepositoryLayer.dll
+C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\RepositoryLayer\bin\Debug\net6.0\ModelLayer.dll
+C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\RepositoryLayer\bin\Debug\net6.0\ModelLayer.pdb
+C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\RepositoryLayer.csproj.AssemblyReference.cache
+C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\RepositoryLayer\obj\Debug\net6.0\Reposito.A0A61804.Up2Date

@@ -26,16 +26,15 @@ namespace HelloGreetingApplication.Controllers
         /// <param name="LastName"></param>
         /// <returns>Personalized message according to input</returns>
         [HttpGet]
-        public IActionResult Get(string? FirstName, string? LastName) 
+        public IActionResult Get() 
         {
             _logger.LogInformation("GET request received");
-            var greetingMessage = _greetingBL.GreetingMessage(FirstName, LastName);
-
+           
             ResponseModel<string> responseModel = new()
             {
                 Success = true,
                 Message = "Hello to Greeting App API Endpoint",
-                Data = greetingMessage
+                Data = "Hello, World!"
             };
 
             return Ok(responseModel);
@@ -44,18 +43,18 @@ namespace HelloGreetingApplication.Controllers
         /// <summary>
         /// Post method to create a new greeting message
         /// </summary>
-        /// <param name="requestModel"></param>
+        /// <param name="userModel"></param>
         /// <returns> responseModel </returns>
         [HttpPost]
-        public IActionResult Post(RequestModel requestModel) 
+        public IActionResult Post(UserModel userModel) 
         {
-            _logger.LogInformation($"POST request received with Key: {requestModel.Key}");
-
-            ResponseModel<string> responseModel = new()
+            _logger.LogInformation($"POST request received");
+            var greetingMessage = _greetingBL.GreetingMessage(userModel);
+            ResponseModel<string> responseModel =  new()
             {
                 Success = true,
                 Message = "Request received successfully",
-                Data = $"Key: {requestModel.Key}, Value: {requestModel.Key}"
+                Data = greetingMessage
             };
 
             return Ok(responseModel);
