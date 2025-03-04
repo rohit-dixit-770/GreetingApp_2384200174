@@ -45,7 +45,7 @@ namespace HelloGreetingApplication.Controllers
         /// </summary>
         /// <param name="userModel"></param>
         /// <returns> responseModel </returns>
-        [HttpPost]
+        [HttpPost("greet")]
         public IActionResult Post(UserModel userModel) 
         {
             _logger.LogInformation($"POST request received");
@@ -59,6 +59,28 @@ namespace HelloGreetingApplication.Controllers
 
             return Ok(responseModel);
         }
+
+
+        /// <summary>
+        /// Post method to create a new greeting message
+        /// </summary>
+        /// <param name="userModel"></param>
+        /// <returns> responseModel </returns>
+        [HttpPost]
+        public IActionResult Post(RequestModel requestModel)
+        {
+            _logger.LogInformation($"POST request received");
+           
+            ResponseModel<string> responseModel = new()
+            {
+                Success = true,
+                Message = "Request received successfully",
+                Data = $"Key: {requestModel.Key} , Value: {requestModel.Value}"
+            };
+
+            return Ok(responseModel);
+        }
+
 
         /// <summary>
         /// Put method to update a new greeting message
