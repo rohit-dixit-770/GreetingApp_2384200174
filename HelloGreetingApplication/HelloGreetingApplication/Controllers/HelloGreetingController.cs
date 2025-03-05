@@ -197,6 +197,43 @@ namespace HelloGreetingApplication.Controllers
         }
 
         /// <summary>
+        /// Updates an existing greeting message.
+        /// </summary>
+        /// <param name="id">The ID of the greeting to update.</param>
+        /// <param name="requestModel">The updated greeting message.</param>
+        /// <returns>The updated greeting message.</returns>
+        [HttpPut("id")]
+        public IActionResult UpdateGreeting(Guid id, RequestModel requestModel)
+        {
+            
+            var existingGreeting = _greetingBL.GetGreetingById(id);
+
+            if (existingGreeting == null)
+            {
+                ResponseModel<string> response = new() {
+                    Success = false,
+                    Message = "Greeting not found",
+                };
+
+                _logger.LogInformation("Update Greeting failed");
+                return NotFound(response);
+            }     
+
+            existingGreeting.Message = requestModel.Message;
+
+            var updatedGreeting = _greetingBL.UpdateGreeting(existingGreeting);
+
+            _logger.LogInformation("Greeting updated successfully");
+            return Ok(new ResponseModel<string>
+            {
+                Success = true,
+                Message = "Greeting updated successfully",
+                Data = updatedGreeting.Message,
+            });
+        }
+
+
+        /// <summary>
         /// Patch method to modify a greeting message
         /// </summary>
         [HttpPatch]
