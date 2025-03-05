@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BusinessLayer.Interface;
 using RepositoryLayer.Interface;
 using ModelLayer.Model;
+using RepositoryLayer.Entity;
 
 namespace BusinessLayer.Service
 {
@@ -20,6 +21,12 @@ namespace BusinessLayer.Service
         public string GreetingMessage(UserModel userModel)
         {
             var result = _greetingRL.GreetingMessage(userModel);
+            return result;
+        }
+
+        public GreetingEntity AddGreeting(GreetingEntity greeting)
+        {
+            var result = _greetingRL.AddGreeting(greeting);
             return result;
         }
     }

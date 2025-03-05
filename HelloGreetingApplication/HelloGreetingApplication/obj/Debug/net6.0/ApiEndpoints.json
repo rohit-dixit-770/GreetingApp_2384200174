@@ -50,8 +50,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Key",
-        "Type": "System.String",
+        "Name": "Id",
+        "Type": "System.Guid",
         "IsRequired": false
       }
     ],
@@ -66,9 +66,25 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Key",
-        "Type": "System.String",
+        "Name": "Id",
+        "Type": "System.Guid",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
+    "Method": "AddGreeting",
+    "RelativePath": "HelloGreeting/AddGreet",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestModel",
+        "Type": "ModelLayer.Model.RequestModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

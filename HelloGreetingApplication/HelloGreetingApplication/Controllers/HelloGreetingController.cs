@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BusinessLayer.Interface;
 using ModelLayer.Model;
+using RepositoryLayer.Entity;
 
 namespace HelloGreetingApplication.Controllers
 {
@@ -13,6 +14,7 @@ namespace HelloGreetingApplication.Controllers
     {
         private readonly ILogger<HelloGreetingController> _logger;
         private readonly IGreetingBL _greetingBL;
+
         public HelloGreetingController(IGreetingBL greetingBL, ILogger<HelloGreetingController> logger)
         {
             _logger = logger;
@@ -20,16 +22,13 @@ namespace HelloGreetingApplication.Controllers
         }
 
         /// <summary>
-        /// Get method to get the greeting message
+        /// Get method to retrieve the greeting message
         /// </summary>
-        /// <param name="FirstName"></param>
-        /// <param name="LastName"></param>
-        /// <returns>Personalized message according to input</returns>
         [HttpGet]
-        public IActionResult Get() 
+        public IActionResult Get()
         {
-            _logger.LogInformation("GET request received");
-           
+            _logger.LogInformation("GET request received to get greeting message");
+
             ResponseModel<string> responseModel = new()
             {
                 Success = true,
@@ -44,13 +43,16 @@ namespace HelloGreetingApplication.Controllers
         /// Post method to create a new greeting message
         /// </summary>
         /// <param name="userModel"></param>
-        /// <returns> responseModel </returns>
+        /// <returns>responseModel containing greeting message</returns>
         [HttpPost("greet")]
-        public IActionResult Post(UserModel userModel) 
+        public IActionResult Post(UserModel userModel)
         {
-            _logger.LogInformation($"POST request received");
+            _logger.LogInformation("POST request received to generate a greeting message for user: {FirstName} {LastName}",
+                userModel.FirstName, userModel.LastName);
+
             var greetingMessage = _greetingBL.GreetingMessage(userModel);
-            ResponseModel<string> responseModel =  new()
+
+            ResponseModel<string> responseModel = new()
             {
                 Success = true,
                 Message = "Request received successfully",
@@ -60,84 +62,115 @@ namespace HelloGreetingApplication.Controllers
             return Ok(responseModel);
         }
 
+        /// <summary>
+        /// Post method to add a new greeting message
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns>Returns a success response if message saved</returns>
+        [HttpPost("AddGreet")]
+        public IActionResult AddGreeting(RequestModel requestModel)
+        {
+            try
+            {
+                _logger.LogInformation("POST request received to add a new greeting with Message: {Message}", requestModel.Message);
+
+                var newGreeting = new GreetingEntity { Message = requestModel.Message };
+                var savedGreeting = _greetingBL.AddGreeting(newGreeting);
+
+                ResponseModel<string> response = new()
+                {
+                    Success = true,
+                    Message = "Greeting saved successfully.",
+                    Data = $"Id: {savedGreeting.Id}, Message: {savedGreeting.Message}" 
+                };
+
+                _logger.LogInformation("Greeting successfully saved");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while saving the greeting ");
+
+                ResponseModel<string> response = new()
+                {
+                    Success = false,
+                    Message = "Failed to save greeting.",
+                    Data = ex.Message
+                };
+                return BadRequest(response);
+            }
+        }
 
         /// <summary>
         /// Post method to create a new greeting message
         /// </summary>
-        /// <param name="userModel"></param>
-        /// <returns> responseModel </returns>
         [HttpPost]
         public IActionResult Post(RequestModel requestModel)
         {
-            _logger.LogInformation($"POST request received");
-           
+            _logger.LogInformation("POST request received with Message: {Message}", requestModel.Message);
+
             ResponseModel<string> responseModel = new()
             {
                 Success = true,
                 Message = "Request received successfully",
-                Data = $"Key: {requestModel.Key} , Value: {requestModel.Value}"
+                Data = $"Message: {requestModel.Message}"
             };
 
             return Ok(responseModel);
         }
 
-
         /// <summary>
-        /// Put method to update a new greeting message
+        /// Put method to update an existing greeting message
         /// </summary>
-        /// <param name="requestModel"></param>
-        /// <returns> responseModel </returns>
         [HttpPut]
-        public IActionResult Put(RequestModel requestModel) 
+        public IActionResult Put(RequestModel requestModel)
         {
-            _logger.LogInformation($"PUT request received with Key: {requestModel.Key}");
+            _logger.LogInformation("PUT request received to update greeting");
 
             ResponseModel<string> responseModel = new()
             {
                 Success = true,
                 Message = "Request updated successfully",
-                Data = $"Updated Key: {requestModel.Key} , Updated Value: {requestModel.Value}"
+                Data = $" Updated Message: {requestModel.Message}"
             };
 
             return Ok(responseModel);
         }
 
         /// <summary>
-        /// Patch method to patch a greeting message
+        /// Patch method to modify a greeting message
         /// </summary>
-        /// <param name="Key"></param>
-        /// <returns> responseModel </returns>
         [HttpPatch]
-        public IActionResult Patch(string Key) 
+        public IActionResult Patch(Guid Id)
         {
-            _logger.LogInformation($"PATCH request received with Key: {Key}");
+            _logger.LogInformation("PATCH request received to modify greeting with ID: {RequestId}", Id);
 
             ResponseModel<string> responseModel = new()
             {
                 Success = true,
                 Message = "Request patched successfully",
-                Data = $" Patched Key: {Key}"
+                Data = $"Patched Id: {Id}"
             };
+
             return Ok(responseModel);
         }
 
         /// <summary>
-        /// Delete method to Delete a greeting message
+        /// Delete method to remove a greeting message
         /// </summary>
-        /// <param name="Key"></param>
-        /// <returns> responseModel </returns>
         [HttpDelete]
-        public IActionResult Delete(string Key) 
+        public IActionResult Delete(Guid Id)
         {
-            _logger.LogInformation($"DELETE request received with Key: {Key}");
+            _logger.LogInformation("DELETE request received to remove greeting with ID: {RequestId}", Id);
 
             ResponseModel<string> responseModel = new()
             {
                 Success = true,
                 Message = "Greeting message deleted successfully",
-                Data = $"Deleted Key: {Key}"
+                Data = $"Deleted Id: {Id}"
             };
 
+            _logger.LogInformation("Greeting successfully deleted with ID: {RequestId}", Id);
             return Ok(responseModel);
         }
     }
