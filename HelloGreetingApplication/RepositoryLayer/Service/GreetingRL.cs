@@ -41,5 +41,10 @@ namespace RepositoryLayer.Service
             }
             return greet;
         }
+
+        public List<GreetingEntity> GetAllGreetings()
+        {
+            return _DbContext.Greetings.ToList();
+        }
     }
 }

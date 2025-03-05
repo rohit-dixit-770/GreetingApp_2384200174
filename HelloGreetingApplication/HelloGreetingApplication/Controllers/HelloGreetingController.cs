@@ -40,8 +40,6 @@ namespace HelloGreetingApplication.Controllers
         }
 
 
-<<<<<<< HEAD
-=======
         /// <summary>
         /// Retrieves a greeting message by its unique identifier
         /// </summary>
@@ -75,8 +73,32 @@ namespace HelloGreetingApplication.Controllers
             });
         }
 
+        /// <summary>
+        /// Retrieves a list of all greeting messages.
+        /// </summary>
+        /// <returns>A list of all stored greetings.</returns>
+        [HttpGet("all-greetings")]
+        public IActionResult GetAllGreetings()
+        {
+            var allGreetings = _greetingBL.GetAllGreetings();
+            if (allGreetings == null || allGreetings.Count == 0)
+            {
+                _logger.LogInformation("No greetings found.");
+                return NotFound(new ResponseModel<String>() 
+                { 
+                    Success = false, 
+                    Message = "No greetings found." 
+                });
+            }
 
->>>>>>> UC5
+            _logger.LogInformation("All greetings retrieved successfully.");
+            return Ok(new ResponseModel<List<GreetingEntity>>() { 
+                Success = true, 
+                Message = "All Greetings fetched successfully",
+                Data = allGreetings });
+        }
+
+
         /// <summary>
         /// Post method to create a new greeting message
         /// </summary>

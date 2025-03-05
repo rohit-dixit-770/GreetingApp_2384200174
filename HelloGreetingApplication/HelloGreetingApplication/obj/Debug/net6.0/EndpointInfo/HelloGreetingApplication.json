@@ -120,7 +120,7 @@
         }
       }
     },
-    "/HelloGreeting/{id}": {
+    "/HelloGreeting/id": {
       "get": {
         "tags": [
           "HelloGreeting"
@@ -128,13 +128,24 @@
         "parameters": [
           {
             "name": "id",
-            "in": "path",
-            "required": true,
+            "in": "query",
             "schema": {
               "type": "string",
               "format": "uuid"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/HelloGreeting/all-greetings": {
+      "get": {
+        "tags": [
+          "HelloGreeting"
         ],
         "responses": {
           "200": {
