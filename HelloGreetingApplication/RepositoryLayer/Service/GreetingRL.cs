@@ -31,5 +31,15 @@ namespace RepositoryLayer.Service
             _DbContext.SaveChanges();
             return greeting;
         }
+
+        public GreetingEntity GetGreetingById(Guid id)
+        {
+            var greet = _DbContext.Greetings.Find(id);
+            if (greet == null)
+            {
+                return new GreetingEntity { Message = null };
+            }
+            return greet;
+        }
     }
 }
