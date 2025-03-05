@@ -22,12 +22,13 @@ namespace BusinessLayer.Service
         {
             var result = _greetingRL.GreetingMessage(userModel);
             return result;
-        }
+        } 
 
         public GreetingEntity AddGreeting(GreetingEntity greeting)
         {
             var result = _greetingRL.AddGreeting(greeting);
             return result;
+            
         }
     }
 }
