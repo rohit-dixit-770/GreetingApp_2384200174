@@ -85,10 +85,11 @@
         ],
         "parameters": [
           {
-            "name": "Key",
+            "name": "Id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -104,10 +105,11 @@
         ],
         "parameters": [
           {
-            "name": "Key",
+            "name": "Id",
             "in": "query",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -148,6 +150,37 @@
           }
         }
       }
+    },
+    "/HelloGreeting/AddGreet": {
+      "post": {
+        "tags": [
+          "HelloGreeting"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -155,11 +188,7 @@
       "RequestModel": {
         "type": "object",
         "properties": {
-          "key": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
+          "message": {
             "type": "string",
             "nullable": true
           }

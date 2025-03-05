@@ -1,30 +1,40 @@
 using BusinessLayer.Interface;
 using BusinessLayer.Service;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using NLog;
 using NLog.Web;
+using RepositoryLayer.Context;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+
 try
 {
+    logger.Info("Application is starting...");
+
     var builder = WebApplication.CreateBuilder(args);
 
-    // Add services to the container.
+    // Retrieve the database connection string
+    var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
 
+    // Configure the application's DbContext to use SQL Server
+    builder.Services.AddDbContext<GreetingContext>(options =>
+        options.UseSqlServer(connectionString));
+
+    // Add services to the container.
     builder.Services.AddControllers();
 
-    // Register Layer
+    // Register Layer Dependencies
     builder.Services.AddScoped<IGreetingBL, GreetingBL>();
     builder.Services.AddScoped<IGreetingRL, GreetingRL>();
-    // setup Nlog 
 
+    // Setup NLog
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
 
     // Register Swagger
-
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(options =>
     {
@@ -41,30 +51,30 @@ try
         });
     });
 
-        var app = builder.Build();
+    var app = builder.Build();
 
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-        // Configure the HTTP request pipeline.
+    // Configure the HTTP request pipeline.
+    app.UseHttpsRedirection();
+    app.UseAuthorization();
+    app.MapControllers();
 
-        app.UseHttpsRedirection();
+    logger.Info("Application started successfully");
 
-        app.UseAuthorization();
-
-        app.MapControllers();
-
-        app.Run();
+    app.Run();
 }
 catch (Exception ex)
 {
-    logger.Error(ex);
-    throw;
+    logger.Error(ex, "Application failed to start");
+    throw; 
 }
 finally
 {
-    LogManager.Shutdown();
+    logger.Info("Application is shutting down...");
+    LogManager.Shutdown(); 
 }
