@@ -98,7 +98,6 @@ namespace HelloGreetingApplication.Controllers
                 Data = allGreetings });
         }
 
-
         /// <summary>
         /// Post method to create a new greeting message
         /// </summary>
