@@ -54,8 +54,26 @@ namespace RepositoryLayer.Service
             {
                 existingGreeting.Message = greeting.Message;
                 _DbContext.SaveChanges();
+
+                return existingGreeting;
             }
-            return existingGreeting;
+
+            return new GreetingEntity { Message = null };
+           
+        }
+
+        public bool DeleteGreeting(Guid id)
+        {
+            var greeting = _DbContext.Greetings.Find(id);
+
+            if (greeting != null)
+            {
+                _DbContext.Greetings.Remove(greeting);
+                _DbContext.SaveChanges();
+
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -7,6 +7,7 @@ using BusinessLayer.Interface;
 using RepositoryLayer.Interface;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
+using RepositoryLayer.Service;
 
 namespace BusinessLayer.Service
 {
@@ -46,6 +47,12 @@ namespace BusinessLayer.Service
         {
             var greet = _greetingRL.UpdateGreeting(greeting);
             return greet;
+        }
+
+        public bool DeleteGreeting(Guid id)
+        {
+            var deletedGreet = _greetingRL.DeleteGreeting(id);
+            return deletedGreet;
         }
     }
 }

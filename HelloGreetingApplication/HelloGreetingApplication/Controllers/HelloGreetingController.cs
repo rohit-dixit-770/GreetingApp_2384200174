@@ -269,5 +269,35 @@ namespace HelloGreetingApplication.Controllers
             _logger.LogInformation("Greeting successfully deleted with ID: {RequestId}", Id);
             return Ok(responseModel);
         }
+
+        /// <summary>
+        /// Deletes a greeting message by its unique identifier
+        /// </summary>
+        /// <param name="id">unique identifier of the greeting message to be deleted</param>
+        /// <returns>Returns response Model</returns>
+        [HttpDelete("id")]
+        public IActionResult DeleteGreet(Guid id)
+        {
+            var isDeleted = _greetingBL.DeleteGreeting(id);
+            if (!isDeleted)
+            {
+                ResponseModel<string> response = new()
+                {
+                    Success = false,
+                    Message = "Greeting not found or could not be deleted"
+                };
+                _logger.LogInformation("Delete Greeting by Id {id} failed", id);
+                return NotFound(response);
+            }
+
+            _logger.LogInformation("Greeting with Id {id} deleted successfully", id);
+
+            return Ok(new ResponseModel<string> {
+                Success = true,
+                Message = "Greeting deleted successfully",
+            });
+            
+
+        }
     }
 }
