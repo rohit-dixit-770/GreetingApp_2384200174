@@ -39,6 +39,7 @@ namespace HelloGreetingApplication.Controllers
             return Ok(responseModel);
         }
 
+
         /// <summary>
         /// Post method to create a new greeting message
         /// </summary>
