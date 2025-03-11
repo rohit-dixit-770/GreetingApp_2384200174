@@ -21,6 +21,12 @@ namespace HelloGreetingApplication.Controllers
             _greetingBL = greetingBL;
         }
 
+        [HttpGet("test-exception")]
+        public IActionResult TestException()
+        {
+            throw new Exception("This is a test exception.");
+        }
+
         /// <summary>
         /// Get method to retrieve the greeting message
         /// </summary>

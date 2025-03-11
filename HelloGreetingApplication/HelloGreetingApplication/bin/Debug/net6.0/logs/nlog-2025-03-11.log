@@ -1,0 +1,24 @@
+2025-03-11 18:28:56.5440 | HelloGreetingApplication.Program | INFO | Application is starting... | 
+2025-03-11 18:29:05.4248 | HelloGreetingApplication.Program | INFO | Application started successfully | 
+2025-03-11 18:29:07.2779 | Microsoft.Hosting.Lifetime | INFO | Now listening on: https://localhost:7222 | 
+2025-03-11 18:29:07.3121 | Microsoft.Hosting.Lifetime | INFO | Now listening on: http://localhost:5240 | 
+2025-03-11 18:29:09.2043 | Microsoft.Hosting.Lifetime | INFO | Application started. Press Ctrl+C to shut down. | 
+2025-03-11 18:29:09.2211 | Microsoft.Hosting.Lifetime | INFO | Hosting environment: Development | 
+2025-03-11 18:29:09.2339 | Microsoft.Hosting.Lifetime | INFO | Content root path: C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\HelloGreetingApplication\ | 
+2025-03-11 18:29:12.1501 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request starting HTTP/2 GET https://localhost:7222/Swagger/index.html - - | 
+2025-03-11 18:29:16.0152 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request finished HTTP/2 GET https://localhost:7222/Swagger/index.html - - - 200 - text/html;charset=utf-8 3886.6925ms | 
+2025-03-11 18:29:16.3828 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request starting HTTP/2 GET https://localhost:7222/Swagger/index.js - - | 
+2025-03-11 18:29:16.3828 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request starting HTTP/2 GET https://localhost:7222/_vs/browserLink - - | 
+2025-03-11 18:29:16.3828 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request starting HTTP/2 GET https://localhost:7222/_framework/aspnetcore-browser-refresh.js - - | 
+2025-03-11 18:29:16.4049 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request finished HTTP/2 GET https://localhost:7222/Swagger/index.js - - - 200 - application/javascript;charset=utf-8 22.0323ms | 
+2025-03-11 18:29:16.4276 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request finished HTTP/2 GET https://localhost:7222/_framework/aspnetcore-browser-refresh.js - - - 200 12006 application/javascript;+charset=utf-8 44.6222ms | 
+2025-03-11 18:29:16.9730 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request finished HTTP/2 GET https://localhost:7222/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 590.2513ms | 
+2025-03-11 18:29:17.3614 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request starting HTTP/2 GET https://localhost:7222/Swagger/v1/swagger.json - - | 
+2025-03-11 18:29:17.3994 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request finished HTTP/2 GET https://localhost:7222/Swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 37.9451ms | 
+2025-03-11 18:30:00.9009 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request starting HTTP/2 GET https://localhost:7222/HelloGreeting/test-exception - - | 
+2025-03-11 18:30:01.1802 | Microsoft.AspNetCore.Routing.EndpointMiddleware | INFO | Executing endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.TestException (HelloGreetingApplication)' | 
+2025-03-11 18:30:01.3301 | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | INFO | Route matched with {action = "TestException", controller = "HelloGreeting"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult TestException() on controller HelloGreetingApplication.Controllers.HelloGreetingController (HelloGreetingApplication). | 
+2025-03-11 18:30:03.0695 | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | INFO | Executed action HelloGreetingApplication.Controllers.HelloGreetingController.TestException (HelloGreetingApplication) in 1718.1849ms | 
+2025-03-11 18:30:03.2866 | Microsoft.AspNetCore.Routing.EndpointMiddleware | INFO | Executed endpoint 'HelloGreetingApplication.Controllers.HelloGreetingController.TestException (HelloGreetingApplication)' | 
+2025-03-11 18:30:03.5791 | Middleware.ExceptionHandler.GlobalExceptionMiddleware | ERROR | Exception caught - This is a test exception. | 
+2025-03-11 18:30:03.6331 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request finished HTTP/2 GET https://localhost:7222/HelloGreeting/test-exception - - - 500 - application/json 2732.2501ms | 

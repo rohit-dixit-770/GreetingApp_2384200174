@@ -10,6 +10,18 @@
     "version": "v1"
   },
   "paths": {
+    "/HelloGreeting/test-exception": {
+      "get": {
+        "tags": [
+          "HelloGreeting"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/HelloGreeting": {
       "get": {
         "tags": [

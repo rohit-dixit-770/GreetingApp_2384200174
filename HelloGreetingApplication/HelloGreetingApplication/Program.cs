@@ -2,6 +2,7 @@ using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Middleware.ExceptionHandler;
 using NLog;
 using NLog.Web;
 using RepositoryLayer.Context;
@@ -59,7 +60,10 @@ try
         app.UseSwaggerUI();
     }
 
-    // Configure the HTTP request pipeline.
+    app.UseMiddleware<GlobalExceptionMiddleware>();
+
+    // Configure the HTTP request pipeline
+    app.UseRouting();
     app.UseHttpsRedirection();
     app.UseAuthorization();
     app.MapControllers();
