@@ -49,7 +49,7 @@ namespace RepositoryLayer.Service
 
         public GreetingEntity UpdateGreeting(GreetingEntity greeting)
         {
-            var existingGreeting = _DbContext.Greetings.Find(greeting.Id);
+            var existingGreeting = _DbContext.Greetings.Find(greeting.GreetingId);
             if (existingGreeting != null)
             {
                 existingGreeting.Message = greeting.Message;

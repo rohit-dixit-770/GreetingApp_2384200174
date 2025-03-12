@@ -21,12 +21,6 @@ namespace HelloGreetingApplication.Controllers
             _greetingBL = greetingBL;
         }
 
-        [HttpGet("test-exception")]
-        public IActionResult TestException()
-        {
-            throw new Exception("This is a test exception.");
-        }
-
         /// <summary>
         /// Get method to retrieve the greeting message
         /// </summary>
@@ -135,8 +129,7 @@ namespace HelloGreetingApplication.Controllers
         [HttpPost("AddGreet")]
         public IActionResult AddGreeting(RequestModel requestModel)
         {
-            try
-            {
+
                 _logger.LogInformation("POST request received to add a new greeting with Message: {Message}", requestModel.Message);
 
                 var newGreeting = new GreetingEntity { Message = requestModel.Message };
@@ -146,24 +139,12 @@ namespace HelloGreetingApplication.Controllers
                 {
                     Success = true,
                     Message = "Greeting saved successfully.",
-                    Data = $"Id: {savedGreeting.Id}, Message: {savedGreeting.Message}" 
+                    Data = $"Id: {savedGreeting.GreetingId}, Message: {savedGreeting.Message}" 
                 };
 
                 _logger.LogInformation("Greeting successfully saved");
                 return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while saving the greeting ");
 
-                ResponseModel<string> response = new()
-                {
-                    Success = false,
-                    Message = "Failed to save greeting.",
-                    Data = ex.Message
-                };
-                return BadRequest(response);
-            }
         }
 
         /// <summary>
