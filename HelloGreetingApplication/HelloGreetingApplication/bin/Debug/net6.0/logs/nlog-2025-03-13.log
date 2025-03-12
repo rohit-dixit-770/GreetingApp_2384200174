@@ -86,3 +86,8 @@ VALUES (@p0, @p1, @p2, @p3, @p4); |
 SELECT TOP(1) [u].[UserId], [u].[Email], [u].[Name], [u].[Password], [u].[Salt]
 FROM [Users] AS [u]
 WHERE [u].[Email] = @__login_Email_0 | 
+2025-03-13 00:23:59.9910 | BusinessLayer.Service.UserBL | INFO | Login successful for user: rkroxx770@gmail.com | 
+2025-03-13 00:24:00.1579 | Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor | INFO | Executing OkObjectResult, writing value of type 'ModelLayer.Model.ResponseModel`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'. | 
+2025-03-13 00:24:00.2891 | Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker | INFO | Executed action HelloGreetingApplication.Controllers.UserController.LoginUser (HelloGreetingApplication) in 12618.3376ms | 
+2025-03-13 00:24:00.3028 | Microsoft.AspNetCore.Routing.EndpointMiddleware | INFO | Executed endpoint 'HelloGreetingApplication.Controllers.UserController.LoginUser (HelloGreetingApplication)' | 
+2025-03-13 00:24:00.8528 | Microsoft.AspNetCore.Hosting.Diagnostics | INFO | Request finished HTTP/2 POST https://localhost:7222/login application/json 63 - 200 - application/json;+charset=utf-8 13558.5146ms | 
