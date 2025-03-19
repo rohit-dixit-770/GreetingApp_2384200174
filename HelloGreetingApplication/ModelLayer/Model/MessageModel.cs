@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Model
 {
-    public class UserModel
+    public class MessageModel
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

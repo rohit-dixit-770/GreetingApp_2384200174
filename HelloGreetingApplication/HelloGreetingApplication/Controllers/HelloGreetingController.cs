@@ -104,12 +104,12 @@ namespace HelloGreetingApplication.Controllers
         /// <param name="userModel"></param>
         /// <returns>responseModel containing greeting message</returns>
         [HttpPost("greet")]
-        public IActionResult Post(UserModel userModel)
+        public IActionResult Post(MessageModel messageModel)
         {
             _logger.LogInformation("POST request received to generate a greeting message for user: {FirstName} {LastName}",
-                userModel.FirstName, userModel.LastName);
+                messageModel.FirstName, messageModel.LastName);
 
-            var greetingMessage = _greetingBL.GreetingMessage(userModel);
+            var greetingMessage = _greetingBL.GreetingMessage(messageModel);
 
             ResponseModel<string> responseModel = new()
             {

@@ -19,9 +19,9 @@ namespace RepositoryLayer.Service
             _DbContext = DbContext; 
         }
 
-        public string GreetingMessage(UserModel userModel)
+        public string GreetingMessage(MessageModel messageModel)
         {
-            var name = $"{userModel.FirstName} {userModel.LastName}".Trim();
+            var name = $"{messageModel.FirstName} {messageModel.LastName}".Trim();
             return string.IsNullOrEmpty(name) ? "Hello, World!" : $"Hello, {name}!";
         }
 

@@ -7,20 +7,21 @@ using BusinessLayer.Interface;
 using Microsoft.Extensions.Logging;
 using ModelLayer.Model;
 using RepositoryLayer.Interface;
+using Middleware.JWT;  
 
 namespace BusinessLayer.Service
 {
-    public class UserBL : IUserBL 
+    public class UserBL : IUserBL
     {
         private readonly IUserRL _userRL;
         private readonly ILogger<UserBL> _logger;
+        private readonly JwtHelper _jwtHelper;
 
-
-        public UserBL(IUserRL userRL, ILogger<UserBL> logger)
+        public UserBL(IUserRL userRL, ILogger<UserBL> logger, JwtHelper jwtHelper)
         {
             _userRL = userRL;
             _logger = logger;
-
+            _jwtHelper = jwtHelper;
         }
 
         public string LoginUser(LoginModel login)

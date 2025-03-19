@@ -10,7 +10,7 @@ namespace BusinessLayer.Interface
 {
     public interface IGreetingBL
     {
-        public string GreetingMessage(UserModel userModel);
+        public string GreetingMessage(MessageModel messageModel);
         public GreetingEntity AddGreeting(GreetingEntity greeting);
         public GreetingEntity GetGreetingById(Guid id);
         public List<GreetingEntity> GetAllGreetings();
