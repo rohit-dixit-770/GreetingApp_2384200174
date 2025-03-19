@@ -12,9 +12,14 @@ namespace RepositoryLayer.Entity
     public class GreetingEntity
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid GreetingId { get; set; }
 
         [Required]
         public string? Message { get; set; }
+
+        public Guid UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public UserEntity? User { get; set; }
     }
 }

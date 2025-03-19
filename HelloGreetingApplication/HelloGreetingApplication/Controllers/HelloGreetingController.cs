@@ -21,12 +21,6 @@ namespace HelloGreetingApplication.Controllers
             _greetingBL = greetingBL;
         }
 
-        [HttpGet("test-exception")]
-        public IActionResult TestException()
-        {
-            throw new Exception("This is a test exception.");
-        }
-
         /// <summary>
         /// Get method to retrieve the greeting message
         /// </summary>
@@ -110,12 +104,12 @@ namespace HelloGreetingApplication.Controllers
         /// <param name="userModel"></param>
         /// <returns>responseModel containing greeting message</returns>
         [HttpPost("greet")]
-        public IActionResult Post(UserModel userModel)
+        public IActionResult Post(MessageModel messageModel)
         {
             _logger.LogInformation("POST request received to generate a greeting message for user: {FirstName} {LastName}",
-                userModel.FirstName, userModel.LastName);
+                messageModel.FirstName, messageModel.LastName);
 
-            var greetingMessage = _greetingBL.GreetingMessage(userModel);
+            var greetingMessage = _greetingBL.GreetingMessage(messageModel);
 
             ResponseModel<string> responseModel = new()
             {
@@ -135,8 +129,7 @@ namespace HelloGreetingApplication.Controllers
         [HttpPost("AddGreet")]
         public IActionResult AddGreeting(RequestModel requestModel)
         {
-            try
-            {
+
                 _logger.LogInformation("POST request received to add a new greeting with Message: {Message}", requestModel.Message);
 
                 var newGreeting = new GreetingEntity { Message = requestModel.Message };
@@ -146,24 +139,12 @@ namespace HelloGreetingApplication.Controllers
                 {
                     Success = true,
                     Message = "Greeting saved successfully.",
-                    Data = $"Id: {savedGreeting.Id}, Message: {savedGreeting.Message}" 
+                    Data = $"Id: {savedGreeting.GreetingId}, Message: {savedGreeting.Message}" 
                 };
 
                 _logger.LogInformation("Greeting successfully saved");
                 return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error occurred while saving the greeting ");
 
-                ResponseModel<string> response = new()
-                {
-                    Success = false,
-                    Message = "Failed to save greeting.",
-                    Data = ex.Message
-                };
-                return BadRequest(response);
-            }
         }
 
         /// <summary>

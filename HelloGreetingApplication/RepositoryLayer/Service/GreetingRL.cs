@@ -19,9 +19,9 @@ namespace RepositoryLayer.Service
             _DbContext = DbContext; 
         }
 
-        public string GreetingMessage(UserModel userModel)
+        public string GreetingMessage(MessageModel messageModel)
         {
-            var name = $"{userModel.FirstName} {userModel.LastName}".Trim();
+            var name = $"{messageModel.FirstName} {messageModel.LastName}".Trim();
             return string.IsNullOrEmpty(name) ? "Hello, World!" : $"Hello, {name}!";
         }
 
@@ -49,7 +49,7 @@ namespace RepositoryLayer.Service
 
         public GreetingEntity UpdateGreeting(GreetingEntity greeting)
         {
-            var existingGreeting = _DbContext.Greetings.Find(greeting.Id);
+            var existingGreeting = _DbContext.Greetings.Find(greeting.GreetingId);
             if (existingGreeting != null)
             {
                 existingGreeting.Message = greeting.Message;
