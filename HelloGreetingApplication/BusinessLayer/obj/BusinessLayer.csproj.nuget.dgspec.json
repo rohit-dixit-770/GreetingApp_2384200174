@@ -32,9 +32,6 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\HP\\Documents\\GreetingApp_2384200174\\HelloGreetingApplication\\Middleware\\Middleware.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GreetingApp_2384200174\\HelloGreetingApplication\\Middleware\\Middleware.csproj"
-              },
               "C:\\Users\\HP\\Documents\\GreetingApp_2384200174\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj": {
                 "projectPath": "C:\\Users\\HP\\Documents\\GreetingApp_2384200174\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj"
               },
@@ -106,11 +103,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "C:\\Users\\HP\\Documents\\GreetingApp_2384200174\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj": {
-                "projectPath": "C:\\Users\\HP\\Documents\\GreetingApp_2384200174\\HelloGreetingApplication\\ModelLayer\\ModelLayer.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -132,10 +125,6 @@
             "Microsoft.AspNetCore": {
               "target": "Package",
               "version": "[2.3.0, )"
-            },
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[6.0.36, )"
             }
           },
           "imports": [
