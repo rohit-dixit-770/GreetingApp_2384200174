@@ -2,7 +2,9 @@ using BusinessLayer.Interface;
 using BusinessLayer.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Middleware.Email;
 using Middleware.ExceptionHandler;
+using Middleware.JWT;
 using NLog;
 using NLog.Web;
 using RepositoryLayer.Context;
@@ -34,6 +36,10 @@ try
     builder.Services.AddScoped<IUserBL, UserBL>();
     builder.Services.AddScoped<IUserRL, UserRL>();
 
+    //Configre JWT and Email Service
+    builder.Services.AddSingleton<JwtHelper>();
+    builder.Services.AddScoped<EmailService>();
+
     // Setup NLog
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
@@ -54,7 +60,7 @@ try
             }
         });
     });
-
+     
     var app = builder.Build();
 
     if (app.Environment.IsDevelopment())

@@ -124,8 +124,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userModel",
-        "Type": "ModelLayer.Model.UserModel",
+        "Name": "messageModel",
+        "Type": "ModelLayer.Model.MessageModel",
         "IsRequired": true
       }
     ],
@@ -224,6 +224,11 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "Token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
       {
         "Name": "NewPassword",
         "Type": "System.String",

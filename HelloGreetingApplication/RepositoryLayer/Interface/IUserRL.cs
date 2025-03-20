@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer.Model;
+using RepositoryLayer.Entity;
 
 namespace RepositoryLayer.Interface
 {
@@ -11,7 +12,7 @@ namespace RepositoryLayer.Interface
     {
         public string LoginUser(LoginModel login);
         public RegistrationResponse RegisterUser(RegisterModel register);
-        public string ForgotPassword(ForgotPasswordModel forgotPassword);
-        public bool ResetPassword(ResetPasswordModel resetPassword);
+        public UserEntity GetUser(string email);
+        public void UpdateUser(UserEntity user);
     }
 }

@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Middleware.JWT;
 using Middleware.PasswordHelper;
 using ModelLayer.Model;
 using RepositoryLayer.Context;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace RepositoryLayer.Service
 {
@@ -80,14 +82,18 @@ namespace RepositoryLayer.Service
         }
 
 
-        public string ForgotPassword(ForgotPasswordModel forgotPassword)
+        public UserEntity GetUser(string email)
         {
-            throw new NotImplementedException();
+            var existingUser = _dbContext.Users.FirstOrDefault(u => u.Email == email);
+
+            return existingUser;
         }
 
-        public bool ResetPassword(ResetPasswordModel resetPassword)
+        public void UpdateUser(UserEntity user)
         {
-            throw new NotImplementedException();
+            var existingUser = _dbContext.Users.FirstOrDefault(u => u.Email == user.Email);
+            existingUser.Email = user.Email;
+            existingUser.Name = user.Name;
         }
     }
 }

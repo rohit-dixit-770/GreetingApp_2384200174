@@ -11,3 +11,6 @@ C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Middleware
 C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Middleware\obj\Debug\net6.0\refint\Middleware.dll
 C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Middleware\obj\Debug\net6.0\Middleware.pdb
 C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Middleware\obj\Debug\net6.0\ref\Middleware.dll
+C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Middleware\bin\Debug\net6.0\ModelLayer.dll
+C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Middleware\bin\Debug\net6.0\ModelLayer.pdb
+C:\Users\HP\Documents\GreetingApp_2384200174\HelloGreetingApplication\Middleware\obj\Debug\net6.0\Middleware.csproj.Up2Date
