@@ -50,12 +50,13 @@ namespace HelloGreetingApplication.Controllers
         public IActionResult ForgotPassword( ForgotPasswordModel forgotPassword)
         {
 
-                var result = _userBL.ForgotPassword(forgotPassword);
-                return Ok(new ResponseModel<string>
-                {
-                    Success = true,
-                    Data = result
-                });
+                var result = _userBL.ForgotPassword(forgotPassword.Email);
+            return Ok(new ResponseModel<bool>
+            {
+                Success = true,
+                Message = $"Reset token is Sent to your Email: {forgotPassword.Email}",
+                Data = result
+            });
 
         }
 

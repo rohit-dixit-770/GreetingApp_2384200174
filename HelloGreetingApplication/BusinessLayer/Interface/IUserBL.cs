@@ -11,7 +11,7 @@ namespace BusinessLayer.Interface
     {
         public string LoginUser(LoginModel login);
         public RegistrationResponse RegisterUser(RegisterModel register);
-        public string ForgotPassword(ForgotPasswordModel forgotPassword);
+        public bool ForgotPassword(string email);
         public bool ResetPassword(ResetPasswordModel resetPassword);
     }
 }
