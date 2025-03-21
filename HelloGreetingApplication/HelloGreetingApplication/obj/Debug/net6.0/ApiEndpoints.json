@@ -1,14 +1,45 @@
 [
   {
-    "ContainingType": "HelloGreetingApplication.Controllers.UserController",
-    "Method": "ForgotPassword",
-    "RelativePath": "forgot-password",
+    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
+    "Method": "AddGreeting",
+    "RelativePath": "AddGreet",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Email",
+        "Name": "Message",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
+    "Method": "GetAllGreetings",
+    "RelativePath": "all-greetings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
+    "Method": "Post",
+    "RelativePath": "greet",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -18,123 +49,7 @@
   {
     "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
     "Method": "Get",
-    "RelativePath": "HelloGreeting",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "Post",
-    "RelativePath": "HelloGreeting",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "requestModel",
-        "Type": "ModelLayer.Model.RequestModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "Put",
-    "RelativePath": "HelloGreeting",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "requestModel",
-        "Type": "ModelLayer.Model.RequestModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "Patch",
-    "RelativePath": "HelloGreeting",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "Delete",
-    "RelativePath": "HelloGreeting",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "AddGreeting",
-    "RelativePath": "HelloGreeting/AddGreet",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "requestModel",
-        "Type": "ModelLayer.Model.RequestModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "GetAllGreetings",
-    "RelativePath": "HelloGreeting/all-greetings",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "Post",
-    "RelativePath": "HelloGreeting/greet",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "messageModel",
-        "Type": "ModelLayer.Model.MessageModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
-    "Method": "Get",
-    "RelativePath": "HelloGreeting/id",
+    "RelativePath": "id",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -150,7 +65,7 @@
   {
     "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
     "Method": "UpdateGreeting",
-    "RelativePath": "HelloGreeting/id",
+    "RelativePath": "id",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -161,9 +76,9 @@
         "IsRequired": false
       },
       {
-        "Name": "requestModel",
-        "Type": "ModelLayer.Model.RequestModel",
-        "IsRequired": true
+        "Name": "Message",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -171,7 +86,7 @@
   {
     "ContainingType": "HelloGreetingApplication.Controllers.HelloGreetingController",
     "Method": "DeleteGreet",
-    "RelativePath": "HelloGreeting/id",
+    "RelativePath": "id",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -186,8 +101,24 @@
   },
   {
     "ContainingType": "HelloGreetingApplication.Controllers.UserController",
+    "Method": "ForgotPassword",
+    "RelativePath": "User/forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "forgotPassword",
+        "Type": "ModelLayer.Model.ForgotPasswordModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "HelloGreetingApplication.Controllers.UserController",
     "Method": "LoginUser",
-    "RelativePath": "login",
+    "RelativePath": "User/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -203,7 +134,7 @@
   {
     "ContainingType": "HelloGreetingApplication.Controllers.UserController",
     "Method": "RegistrationUser",
-    "RelativePath": "register",
+    "RelativePath": "User/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -219,25 +150,15 @@
   {
     "ContainingType": "HelloGreetingApplication.Controllers.UserController",
     "Method": "ResetPassword",
-    "RelativePath": "reset-password",
+    "RelativePath": "User/reset-password",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Token",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "NewPassword",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ConfirmPassword",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "resetPassword",
+        "Type": "ModelLayer.Model.ResetPasswordModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

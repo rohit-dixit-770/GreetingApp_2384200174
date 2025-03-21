@@ -8,9 +8,7 @@ namespace HelloGreetingApplication.Controllers
     /// <summary>
     /// Class providing API for HelloGreeting
     /// </summary>
-    [ApiController]
-    [Route("[controller]")]
-    public class HelloGreetingController : ControllerBase
+    public class HelloGreetingController : Controller
     {
         private readonly ILogger<HelloGreetingController> _logger;
         private readonly IGreetingBL _greetingBL;

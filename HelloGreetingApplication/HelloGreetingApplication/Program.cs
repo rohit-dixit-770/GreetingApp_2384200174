@@ -26,7 +26,7 @@ try
     builder.Services.AddDbContext<GreetingContext>(options =>
         options.UseSqlServer(connectionString));
 
-    // Add services to the container.
+    // Add services to the container
     builder.Services.AddControllers();
 
     // Register Layer Dependencies
@@ -36,7 +36,7 @@ try
     builder.Services.AddScoped<IUserBL, UserBL>();
     builder.Services.AddScoped<IUserRL, UserRL>();
 
-    //Configre JWT and Email Service
+    // Configure JWT and Email Service
     builder.Services.AddSingleton<JwtHelper>();
     builder.Services.AddScoped<EmailService>();
 
@@ -60,8 +60,19 @@ try
             }
         });
     });
-     
+
+    //  Register CORS
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAll", policy =>
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader());
+    });
+
     var app = builder.Build();
+
+    app.UseMiddleware<GlobalExceptionMiddleware>(); 
 
     if (app.Environment.IsDevelopment())
     {
@@ -69,7 +80,8 @@ try
         app.UseSwaggerUI();
     }
 
-    app.UseMiddleware<GlobalExceptionMiddleware>();
+    // Enable CORS Before Authorization
+    app.UseCors("AllowAll");
 
     // Configure the HTTP request pipeline
     app.UseRouting();
@@ -84,10 +96,10 @@ try
 catch (Exception ex)
 {
     logger.Error(ex, "Application failed to start");
-    throw; 
+    throw;
 }
 finally
 {
     logger.Info("Application is shutting down...");
-    LogManager.Shutdown(); 
+    LogManager.Shutdown();
 }

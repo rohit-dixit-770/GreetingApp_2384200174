@@ -15,10 +15,14 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e7cb077aab5f3973e113e9f7e2fae399ae352ad1")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc52c57c3623851fc70939b65d62790c15f6705f")]
 >>>>>>> UC12
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46f6a53fe817686b397f30aff066063c03f1bfb6")]
+>>>>>>> UC13
 [assembly: System.Reflection.AssemblyProductAttribute("Middleware")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Middleware")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

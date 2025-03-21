@@ -17,9 +17,9 @@ namespace RepositoryLayer.Entity
         [Required]
         public string? Message { get; set; }
 
+        [ForeignKey("UserId")]
         public Guid UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public UserEntity? User { get; set; }
+        public virtual UserEntity? User { get; set; }
     }
 }
