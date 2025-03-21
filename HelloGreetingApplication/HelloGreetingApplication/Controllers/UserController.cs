@@ -4,7 +4,9 @@ using ModelLayer.Model;
 
 namespace HelloGreetingApplication.Controllers
 {
-    public class UserController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class UserController : ControllerBase
     {
         private readonly IUserBL _userBL;
         private readonly ILogger<UserController> _logger;

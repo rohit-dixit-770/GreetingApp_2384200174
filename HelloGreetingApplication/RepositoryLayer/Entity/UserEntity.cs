@@ -26,6 +26,6 @@ namespace RepositoryLayer.Entity
         [Required]
         public byte[]? Salt { get; set; }
 
-        public ICollection<GreetingEntity>? Greetings { get; set; }
+        public virtual ICollection<GreetingEntity>? Greetings { get; set; } = new List<GreetingEntity>();
     }
 }
